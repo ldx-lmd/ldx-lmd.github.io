@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021/4 | LDX110130LMD</title>
+  <title>setTimeout | LDX110130LMD</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="110love130">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LDX110130LMD">
-<meta property="og:url" content="http://example.com/archives/2021/04/index.html">
+  <meta name="description" content="关于setTimeout">
+<meta property="og:type" content="article">
+<meta property="og:title" content="setTimeout">
+<meta property="og:url" content="http://example.com/2021/04/25/setTimeout/index.html">
 <meta property="og:site_name" content="LDX110130LMD">
-<meta property="og:description" content="110love130">
+<meta property="og:description" content="关于setTimeout">
 <meta property="og:locale">
+<meta property="article:published_time" content="2021-04-25T11:50:17.000Z">
+<meta property="article:modified_time" content="2021-04-25T12:28:26.929Z">
 <meta property="article:author" content="ldxlmd">
 <meta name="twitter:card" content="summary">
   
@@ -185,156 +187,214 @@
           </div>
           <div id="js-content" class="content-ll">
             
+<article id="post-setTimeout" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      setTimeout
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/25/setTimeout/" class="archive-article-date">
+
+        
+        <a href="/2021/04/25/setTimeout/" class="archive-article-date">
   	<time datetime="2021-04-25T11:50:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-25</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/25/setTimeout/">setTimeout</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="关于setTimeout"><a href="#关于setTimeout" class="headerlink" title="关于setTimeout"></a>关于setTimeout</h1><span id="more"></span>
 
-        <div class="article-info info-on-right">
-          
-          
+<h2 id="setTimeout的基本语法功能"><a href="#setTimeout的基本语法功能" class="headerlink" title="setTimeout的基本语法功能"></a>setTimeout的基本语法功能</h2><p>setTimeout()方法用于在指定的毫秒数后调用函数或者计算表达式</p>
+<p>为了解释上面的那句话，来看一下一个简单的例子</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>setTimeout<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html; charset=utf-8&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>setTimeout<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;content&quot;</span>&gt;</span>测试<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">       <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">           <span class="keyword">let</span> content = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;content&#x27;</span>);</span></span><br><span class="line"><span class="handlebars"><span class="xml">           content.innerHTML = &quot;<span class="tag">&lt;<span class="name">div</span>&gt;</span>一秒后<span class="tag">&lt;/<span class="name">div</span>&gt;</span>&quot;;</span></span></span><br><span class="line">       &#125;,1000);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<p>span标签里的内容一秒钟之后由“测试”变成了“一秒后”</p>
+<h2 id="计时器的功能"><a href="#计时器的功能" class="headerlink" title="计时器的功能"></a>计时器的功能</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>setTimeout<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html; charset=utf-8&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>setTimeout<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;content&quot;</span>&gt;</span>时间<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;start()&quot;</span>&gt;</span>开始<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> x = <span class="number">00</span>,</span></span><br><span class="line">            y = 00,</span><br><span class="line">            z = 00;</span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">start</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line">            if (x&lt;= 59 &amp;&amp; x&gt;=0 &amp;&amp; y&lt;=59 &amp;&amp; y&gt;=0 &amp;&amp; z&lt;=59 &amp;&amp; z&gt;=0) &#123;</span><br><span class="line"><span class="javascript">               <span class="keyword">let</span> content = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;content&#x27;</span>);</span></span><br><span class="line"><span class="javascript">               content.innerHTML = z + <span class="string">&quot;:&quot;</span> + y + <span class="string">&quot;:&quot;</span> + x;</span></span><br><span class="line"><span class="javascript">               <span class="built_in">console</span>.log(x);</span></span><br><span class="line">               x = x + 1;</span><br><span class="line"><span class="javascript">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (y&lt;=<span class="number">59</span> &amp;&amp; y&gt;=<span class="number">0</span> &amp;&amp; z&lt;=<span class="number">59</span> &amp;&amp; z&gt;=<span class="number">0</span>) &#123;</span></span><br><span class="line">                y = y + 1;</span><br><span class="line">                x = 0;</span><br><span class="line"><span class="javascript">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (z&lt;=<span class="number">59</span> &amp;&amp; z&gt;=<span class="number">0</span>)&#123;</span></span><br><span class="line">                z = z + 1;</span><br><span class="line">                x = 0;</span><br><span class="line">                y = 0;</span><br><span class="line">            &#125;</span><br><span class="line"><span class="javascript">            <span class="built_in">setTimeout</span> (<span class="string">&quot;start()&quot;</span>,<span class="number">1000</span>);  <span class="comment">//注意，这里调用要用引号包围</span></span></span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里点击之后开始执行start()函数，在函数里面setTimeout()函数又调用了start（），所以就是一秒钟调用一次start（）函数</p>
+<h2 id="setTimeout-的参数"><a href="#setTimeout-的参数" class="headerlink" title="setTimeout()的参数"></a>setTimeout()的参数</h2><p>setTimeout()可以接受两个参数，第一个参数是需要回调的参数，必须传入的参数，第二个参数是时间间隔，毫秒数，可以省略。但是其实它可以接受更多的参数，那么这些参数是干什么用的呢？从第三个参数开始，依次用来表示传入回调函数的参数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">0</span> + a + b)</span><br><span class="line">&#125;,<span class="number">1000</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+<p>注意：IE 9.0及一下的版本，只允许setTimeout有两个参数，不支持更多的参数，如果想向回调函数中传递参数，可以使用bind()</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;.bind(<span class="number">3</span>,<span class="number">4</span>),<span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="清除定时器"><a href="#清除定时器" class="headerlink" title="清除定时器"></a>清除定时器</h2><p>clearTimeout()</p>
+<p>setTimeout函数是一个表示计数器编号的整数值，将该整数传入clearTimeout函数，就可以取消对应的计时器</p>
+<p>clearTimeout()有以下语法：clearTimeout（timeoutID）</p>
+<p>要使用clearTimeout(),我们设定setTimeout的时候要给予这个setTimeout一个名称，这个名称就是timeoutID，我们清除的时候，就是用这个timroutID来清除</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> id1 = <span class="built_in">setTimeout</span>(f,<span class="number">1000</span>);  <span class="comment">//id1就是timeoutID</span></span><br><span class="line"><span class="keyword">var</span> id2 = <span class="built_in">setInterval</span>(f,<span class="number">1000</span>); <span class="comment">//id2就是timeoutID</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">clearTimeout</span>(id1);</span><br><span class="line"><span class="built_in">clearInterval</span>(id2);</span><br></pre></td></tr></table></figure>
+
+<h2 id="setTimeout-的this指向"><a href="#setTimeout-的this指向" class="headerlink" title="setTimeout()的this指向"></a>setTimeout()的this指向</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  x: <span class="number">2</span>,</span><br><span class="line">  y: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.x);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">setTimeout</span>(obj.y,<span class="number">1000</span>);  <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>why?不是说了哪个对象调用的就是指向哪个对象的嘛，这里不是setTimeout函数调用了obj对象里面的y方法吗，那不还是被setTimeout调用了吗，对啊，没错啊，就是setTimeout调用的，但是setTimeout函数是属于window的，知道吧，所以setTimeout的对象是window，所以一切都明了了。</p>
+<p>再来一个例子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">login</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.login = login;</span><br><span class="line">  <span class="built_in">this</span>.sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.login);  <span class="comment">//undefined</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> Animal(<span class="string">&#x27;John&#x27;</span>);</span><br><span class="line"><span class="built_in">setTimeout</span>(dog.sayHi, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="setTimeout-之延迟时间为0"><a href="#setTimeout-之延迟时间为0" class="headerlink" title="setTimeout()之延迟时间为0"></a>setTimeout()之延迟时间为0</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;b&#x27;</span>);</span><br><span class="line">&#125;,<span class="number">0</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;c&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;d&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p> 控制台输出：<br>a<br>c<br>d<br>b </p>
+<p> 知道为什么吗，理论上他延迟时间为0不是应该马上执行吗，不是的。因为setTimeout运行机制说过，必须要等到当前脚本的同步任务和“任务队列”中已有的事件，全部处理完以后，才会执行setTimeout指定的任务。也就是说，setTimeout的真正作用是，在“任务队列”的现有事件的后面再添加一个事件，规定在指定时间执行某段代码。setTimeout添加的事件，会在下一次Event Loop执行。</p>
+<h2 id="时间循环中的setTimeout"><a href="#时间循环中的setTimeout" class="headerlink" title="时间循环中的setTimeout()"></a>时间循环中的setTimeout()</h2><p>众所周知，Javascript引擎（以下简称JS引擎）是单线程的，在某一个特定的时间内只能执行一个任务，并阻塞其他任务的执行，也就是说这些任务是串行的。这样的话，用户不得不等待一个耗时的操作完成之后才能进行后面的操作，这显然是不能容忍的，但是实际开发中我们却可以使用异步代码来解决。</p>
+<p>当异步方法比如这里的setTimeout()，或者ajax请求、DOM事件执行的时候，会交由浏览器内核的其他模块去管理。当异步的方法满足触发条件后，该模块就会将方法推入到一个任务队列中，当主线程代码执行完毕处于空闲状态的时候，就会去检查任务队列，将队列中第一个任务入栈执行，完毕后继续检查任务队列，如此循环。前提条件是主线程处于空闲状态，这就是事件循环的模型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;a&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p> 控制台输出：<br>a<br>b </p>
+<p> 原理，就是上面两段话当中解释的，执行时把setTimeout()放入任务队列中去，主线程执行完主线程的任务之后去任务队列里面执行setTimeout出来执行。 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1111</span>);</span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<p> 这里控制台是永远不会输出东西的，因为主线程已经造成了死循环，主线程一直是不会空闲的，他不会到任务队列里面去执行拿setTimeout函数来执行。 </p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://ldx-lmd.github.io/021/04/25/setTimeout/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/21/let-%E5%92%8C-const/" class="archive-article-date">
-  	<time datetime="2021-04-21T12:12:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-21</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/04/21/let-%E5%92%8C-const/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">let 和 const</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/21/let-%E5%92%8C-const/">let 和 const</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8EsetTimeout"><span class="toc-number">1.</span> <span class="toc-text">关于setTimeout</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#setTimeout%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%8A%9F%E8%83%BD"><span class="toc-number">1.1.</span> <span class="toc-text">setTimeout的基本语法功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E6%97%B6%E5%99%A8%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-number">1.2.</span> <span class="toc-text">计时器的功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#setTimeout-%E7%9A%84%E5%8F%82%E6%95%B0"><span class="toc-number">1.3.</span> <span class="toc-text">setTimeout()的参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%85%E9%99%A4%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-number">1.4.</span> <span class="toc-text">清除定时器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#setTimeout-%E7%9A%84this%E6%8C%87%E5%90%91"><span class="toc-number">1.5.</span> <span class="toc-text">setTimeout()的this指向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#setTimeout-%E4%B9%8B%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4%E4%B8%BA0"><span class="toc-number">1.6.</span> <span class="toc-text">setTimeout()之延迟时间为0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%BE%AA%E7%8E%AF%E4%B8%AD%E7%9A%84setTimeout"><span class="toc-number">1.7.</span> <span class="toc-text">时间循环中的setTimeout()</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/20/%E7%BB%A7%E6%89%BF/" class="archive-article-date">
-  	<time datetime="2021-04-20T06:18:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-20</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/20/%E7%BB%A7%E6%89%BF/">继承</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/19/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="archive-article-date">
-  	<time datetime="2021-04-19T00:33:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/19/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D/">深拷贝浅拷贝</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/15/%E6%95%B0%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2021-04-15T07:46:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/15/%E6%95%B0%E7%BB%84/">数组</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -360,8 +420,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
