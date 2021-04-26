@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | LDX110130LMD</title>
+  <title>数组Reduce详解 | LDX110130LMD</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="110love130">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LDX110130LMD">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="JS数组Reduce方法详解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组Reduce详解">
+<meta property="og:url" content="http://example.com/2021/04/26/%E6%95%B0%E7%BB%84Reduce%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="LDX110130LMD">
-<meta property="og:description" content="110love130">
+<meta property="og:description" content="JS数组Reduce方法详解">
 <meta property="og:locale">
+<meta property="article:published_time" content="2021-04-26T01:52:02.000Z">
+<meta property="article:modified_time" content="2021-04-26T07:33:02.086Z">
 <meta property="article:author" content="ldxlmd">
 <meta name="twitter:card" content="summary">
   
@@ -185,183 +187,229 @@
           </div>
           <div id="js-content" class="content-ll">
             
+<article id="post-数组Reduce详解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      数组Reduce详解
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/26/%E6%95%B0%E7%BB%84Reduce%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+
+        
+        <a href="/2021/04/26/%E6%95%B0%E7%BB%84Reduce%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
   	<time datetime="2021-04-26T01:52:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-26</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/26/%E6%95%B0%E7%BB%84Reduce%E8%AF%A6%E8%A7%A3/">数组Reduce详解</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JS数组Reduce方法详解"><a href="#JS数组Reduce方法详解" class="headerlink" title="JS数组Reduce方法详解"></a>JS数组Reduce方法详解</h1><span id="more"></span>
 
-        <div class="article-info info-on-right">
-          
-          
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>reduce方法会将数组元素从左到右依次执行reducer函数，然后返回一个累计的值。</p>
+<p>reduce方法接受两个参数，第一个参数是回调函数reducer，第二个参数是初始值。reducer函数接受四个参数</p>
+<ul>
+<li>Accumulator：MDN上解释为累计器，但是我觉得不恰当，按我的理解他应该是截至当前元素，之前所有元素被reducer函数处理累计的结果</li>
+<li>Current：当前被执行数组元素</li>
+<li>CurrrntInderx：当前被执行数组元素的索引</li>
+<li>Source Array：原数组，也就是调用reduce方法的数组</li>
+</ul>
+<p>如果传入第二个参数，reduce方法会在这个参数的基础上开始累计执行</p>
+<p>数组求和的例子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="keyword">const</span> accumulator = <span class="function">(<span class="params">total, current, currentIndex, arr</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(total, current, currentIndex, arr)</span><br><span class="line">    <span class="keyword">return</span> total + current</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(arr.reduce(accumulator)) <span class="comment">//10</span></span><br></pre></td></tr></table></figure>
 
+<p>执行结果：累加于1 累加当前元素2 当前元素的索引1 原数组[1, 2, 3, 4]</p>
+<p>​                  累加于3 累加当前元素3 当前元素的索引2 原数组[1, 2, 3, 4]</p>
+<p>​                  累加于6 累加当前元素4 当前元素的索引3 原数组[1, 2, 3, 4]</p>
+<p>​                  最终值10</p>
+<p> 很明确，最终的结果就是把所有数组的元素都加起来。值得注意的是，它将数组的第一个元素作为累加的初始值，然后再依次对后边的元素执行reducer函数 </p>
+<p> 总共执行了三次，得出最终结果。那如果传入初始值，是怎样的执行顺序 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(arr.reduce(accumulator, <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+
+<p>执行结果：累加于3 累加当前元素1 当前元素的索引0 原数组[1, 2, 3, 4]</p>
+<p>​                  累加于4 累加当前元素2 当前元素的索引1 原数组[1, 2, 3, 4]</p>
+<p>​                  累加于6 累加当前元素3 当前元素的索引2 原数组[1, 2, 3, 4]</p>
+<p>​                  累加于9 累加当前元素4 当前元素的索引3 原数组[1, 2, 3, 4]</p>
+<p>​                  最终值13</p>
+<p> 这次是以传入的初始值作为累加的起点，然后依次对数组的元素执行reducer。 </p>
+<p> 假设对没有初始值的空数组调用reduce方法，则会报错 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Uncaught <span class="built_in">TypeError</span>: Reduce <span class="keyword">of</span> empty array <span class="keyword">with</span> no initial value</span><br></pre></td></tr></table></figure>
+
+<h2 id="一些用法"><a href="#一些用法" class="headerlink" title="一些用法"></a>一些用法</h2><h3 id="1-扁平化数组"><a href="#1-扁平化数组" class="headerlink" title="1.扁平化数组"></a>1.扁平化数组</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> array = [[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>]]</span><br><span class="line"><span class="keyword">const</span> flatten = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> a.concat(b)</span><br><span class="line">  &#125;, [])</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(flatten(array)); <span class="comment">// [0, 1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+
+<p>执行过程</p>
+<ul>
+<li><p>第一次执行，初始值传入<code>[]</code>，走到reduce的回调里，参数a就这个<code>[]</code>，参数b是数组第一项<code>[0, 1]</code>，回调内<code>[].cancat([0, 1])</code></p>
+</li>
+<li><p>第二次执行，reduce的回调参数a是上一次回调执行的结果<code>[0, 1]</code>，本次继续用它来concat数组的第二项<code>[2, 3]</code>，得到结果<code>[0, 1, 2, 3]</code>作为下一次回调执行的参数a继续执行下去</p>
+</li>
+<li><p>…以此类推</p>
+<p>那么假设数组是这样呢？<code>[[0, [111, 222], 1], [2, [333, [444, 555]], 3], [4, 5]]</code>，其实加个递归调用就可以 </p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> array = [[<span class="number">0</span>, [<span class="number">111</span>, <span class="number">222</span>], <span class="number">1</span>], [<span class="number">2</span>, [<span class="number">333</span>, [<span class="number">444</span>, <span class="number">555</span>]], <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> flatten = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (b <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> a.concat(flatten(b))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a.concat(b)</span><br><span class="line">  &#125;, [])</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(flatten(array)); <span class="comment">// [0, 111, 222, 1, 2, 333, 444, 555, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-统计字符串中每个字符串出现的次数"><a href="#2-统计字符串中每个字符串出现的次数" class="headerlink" title="2.统计字符串中每个字符串出现的次数"></a>2.统计字符串中每个字符串出现的次数</h3><p> 每次回调执行的时候，都会往对象中加一个key为字符串，value为出现次数的键值，若已经存储过字符串，那么它的value加1。 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;adefrfdnnfhdueassjfkdiskcddfjds&#x27;</span></span><br><span class="line"><span class="keyword">const</span> arr = str.split(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> strObj = arr.reduce(<span class="function">(<span class="params">all, current</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (current <span class="keyword">in</span> all) &#123;</span><br><span class="line">    all[current]++</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    all[current] = <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> all</span><br><span class="line">&#125;, &#123;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(strObj) <span class="comment">// &#123;&quot;a&quot;:2,&quot;d&quot;:7,&quot;e&quot;:2,&quot;f&quot;:5,&quot;r&quot;:1,&quot;n&quot;:2,&quot;h&quot;:1,&quot;u&quot;:1,&quot;s&quot;:4,&quot;j&quot;:2,&quot;k&quot;:2,&quot;i&quot;:1,&quot;c&quot;:1&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-数组去重"><a href="#3-数组去重" class="headerlink" title="3.数组去重"></a>3.数组去重</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;1&#x27;</span>]</span><br><span class="line"><span class="keyword">const</span> afterUnique = arr.reduce(<span class="function">(<span class="params">all, current</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!all.includes(current)) &#123;</span><br><span class="line">    all.push(current)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> all</span><br><span class="line">&#125;, [])</span><br><span class="line"><span class="built_in">console</span>.log(afterUnique); <span class="comment">//  [&quot;1&quot;, &quot;a&quot;, &quot;c&quot;, &quot;d&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-实现"><a href="#4-实现" class="headerlink" title="4.实现"></a>4.实现</h3><ul>
+<li>接收两个参数，第一个为函数，函数内会接收四个参数：Accumulator Current CurrentIndex SourceArray，第二个参数为初始值。</li>
+<li>返回值为一个所有Accumulator累计执行的结果</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.myReduce = <span class="function"><span class="keyword">function</span>(<span class="params">fn, base</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">this</span>.length === <span class="number">0</span> &amp;&amp; !base) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;Reduce of empty array with no initial value&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="built_in">this</span>.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!base) &#123;</span><br><span class="line">      base = fn(<span class="built_in">this</span>[i], <span class="built_in">this</span>[i + <span class="number">1</span>], i, <span class="built_in">this</span>)</span><br><span class="line">      i++</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      base = fn(base, <span class="built_in">this</span>[i], i, <span class="built_in">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> base</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://ldx-lmd.github.io/021/04/26/%E6%95%B0%E7%BB%84Reduce%E8%AF%A6%E8%A7%A3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/25/setTimeout/" class="archive-article-date">
-  	<time datetime="2021-04-25T11:50:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-25</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/04/25/setTimeout/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">setTimeout</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/25/setTimeout/">setTimeout</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JS%E6%95%B0%E7%BB%84Reduce%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">JS数组Reduce方法详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E7%94%A8%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">一些用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%89%81%E5%B9%B3%E5%8C%96%E6%95%B0%E7%BB%84"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.扁平化数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BB%9F%E8%AE%A1%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%AF%8F%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.统计字符串中每个字符串出现的次数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.数组去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.4.</span> <span class="toc-text">4.实现</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/21/let-%E5%92%8C-const/" class="archive-article-date">
-  	<time datetime="2021-04-21T12:12:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-21</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/21/let-%E5%92%8C-const/">let 和 const</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/20/%E7%BB%A7%E6%89%BF/" class="archive-article-date">
-  	<time datetime="2021-04-20T06:18:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/20/%E7%BB%A7%E6%89%BF/">继承</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/19/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="archive-article-date">
-  	<time datetime="2021-04-19T00:33:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/19/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D/">深拷贝浅拷贝</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/15/%E6%95%B0%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2021-04-15T07:46:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/15/%E6%95%B0%E7%BB%84/">数组</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -387,8 +435,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
