@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | LDX110130LMD</title>
+  <title>哈希表 | LDX110130LMD</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="110love130">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LDX110130LMD">
-<meta property="og:url" content="http://example.com/archives/page/2/index.html">
+  <meta name="description" content="哈希表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="哈希表">
+<meta property="og:url" content="http://example.com/2021/05/28/%E5%93%88%E5%B8%8C%E8%A1%A8/index.html">
 <meta property="og:site_name" content="LDX110130LMD">
-<meta property="og:description" content="110love130">
+<meta property="og:description" content="哈希表">
 <meta property="og:locale">
+<meta property="article:published_time" content="2021-05-28T02:14:56.000Z">
+<meta property="article:modified_time" content="2021-05-28T02:15:51.507Z">
 <meta property="article:author" content="ldxlmd">
 <meta name="twitter:card" content="summary">
   
@@ -185,78 +187,244 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-哈希表" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/19/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="archive-article-date">
-  	<time datetime="2021-04-19T00:33:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/19/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D/">深拷贝浅拷贝</a>
+    <h1 class="article-title" itemprop="name">
+      哈希表
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/15/%E6%95%B0%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2021-04-15T07:46:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
+        
+        <a href="/2021/05/28/%E5%93%88%E5%B8%8C%E8%A1%A8/" class="archive-article-date">
+  	<time datetime="2021-05-28T02:14:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-28</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/15/%E6%95%B0%E7%BB%84/">数组</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><span id="more"></span>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>哈希表通常是基于<strong>数组</strong>进行实现，但是相对于数组，他也有很多的优势：</p>
+<ul>
+<li>它可以提供快速的插入-删除-查找操作</li>
+<li>无论多少数据，插入和删除值都需要接近常量的时间：即O(1)的时间级，实际上只需要几个<strong>机器指令</strong>即可完成</li>
+<li>哈希表的速度比树还要快，基本可以瞬间查找到想要的元素</li>
+<li>哈希表相对于树来说编码要容易很多</li>
+</ul>
+<p>哈希表的一些不足：</p>
+<ul>
+<li>哈希表的数据是<strong>没有顺序</strong>的，所以不能以一种固定的方式(比如从小到大)来遍历其中的元素</li>
+<li>通常情况下，哈希表中的key是不允许重复的，不能放置相同的key，用于保存不同的元素</li>
+</ul>
+<p>哈希表的结构就是数组，但是它神奇的地方在于对<strong>下标值的一种变换</strong>，这种变换我们可以称之为<strong>哈希函数</strong>，通过哈希函数，就可以获取到HashCode</p>
+<p>那怎么实现这种下标值的转换呢</p>
+<p><strong>单词/字符串</strong>转下标值，其实就是字母/文字转数字</p>
+<p>怎么转？</p>
+<p>我们现在需要设计一种方案，可以将单词转换成适当的下标值：</p>
+<ul>
+<li>其实计算机中有很多的编码方案就是用数字代替单词的字符，就是字符编码</li>
+<li>比如ASCII编码：a是97，b是98，依次类推122代表z</li>
+<li>我们也可以设计一个自己的编码系统，比如a是1，b是2，以此类推z是26</li>
+<li>当然我们可以加上空格用0代替，就是27个字符(不考虑大小写问题)</li>
+<li>但是有了编码系统以后，一个单词如何转换成数字呢</li>
+</ul>
+<h2 id="认识哈希化"><a href="#认识哈希化" class="headerlink" title="认识哈希化"></a>认识哈希化</h2><ul>
+<li>哈希化：将大数字转换成数组范围内下标的过程，我们就称之为哈希化</li>
+<li>哈希函数：通常我们会将单词转换成到大数字，大数字在进行哈希化的代码实现放在一个函数中，这个函数我们称为哈希函数</li>
+<li>哈希表：最终将数据插入到的这个数组，对整个结构的封装，我们就称之为一个哈希表 </li>
+</ul>
+<p>但是通过哈希化的下标值依然会存在重复，如何解决这种问题呢</p>
+<p>两种解决方案</p>
+<ul>
+<li>链地址法(拉链法)</li>
+<li>开放地址法</li>
+</ul>
+<h2 id="链地址法（拉链法）"><a href="#链地址法（拉链法）" class="headerlink" title="链地址法（拉链法）"></a>链地址法（拉链法）</h2><p>每个下标值不是单纯的存储一个元素，而是存储一个数组，或者链表</p>
+<ul>
+<li>链地址法解决冲突的办法是每个数组单元中存储的不再是单个数据，而是一个链条</li>
+<li>这个链条使用什么数据结构呢？常见的是数组或者链表</li>
+<li>比如链表，也就是每个数组单元中存储着一个链表，一但发现重复，将重复的元素插入到链表的首端或者末端即可</li>
+<li>当 查询时，现根据哈希化后的下标值找到对对应的位置，再取出链表，依次查询数据</li>
+</ul>
+<h2 id="开放地址法"><a href="#开放地址法" class="headerlink" title="开放地址法"></a>开放地址法</h2><p>开放地址法的主要工作方式是寻找空白的单元格来添加重复的 数据</p>
+<p>寻找空白单元位置有三种方法</p>
+<ul>
+<li>线性探测</li>
+<li>二次探测</li>
+<li>再哈希</li>
+</ul>
+<h3 id="再哈希法"><a href="#再哈希法" class="headerlink" title="再哈希法"></a>再哈希法</h3><p>其目的就是解决添加重复元素的时候，寻找空白位置的步长</p>
+<ul>
+<li>线性探测的步长是1，二次探测的步长增大，但是步长都是固定的</li>
+<li>现在需要一种方法：产生一种<em>依赖关键字的探测序列</em>，而不是每个关键字都一样</li>
+<li>那么不同的关键字即使映射到相同的下标，也可以使用不同的探测序列</li>
+<li>再哈希法的做法就是：把关键字用另外一个哈希函数，再做依次哈希化，用这次哈希化的结果作为步长</li>
+<li>对于指定的关键字，步长在整个探测中是不变的，不过不同的关键字使用不同的步长</li>
+</ul>
+<p>第二次哈希化需要具备如下特点：</p>
+<ul>
+<li>和第一次哈希函数不同</li>
+<li>不能输出为0</li>
+</ul>
+<p>其实，我们不用费脑细胞来设计了，计算机专家已经设计出一种工作很好的哈希函数：</p>
+<ul>
+<li>stepSize = constant - (key % constant)</li>
+<li>其中constant是质数，且小于数组的容量</li>
+<li>例如stepSize  = 5 - （key % 5)满足需求，并且结果不可能为0</li>
+</ul>
+<h2 id="哈希表的封装"><a href="#哈希表的封装" class="headerlink" title="哈希表的封装"></a>哈希表的封装</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">HashTable</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//属性</span></span><br><span class="line">    <span class="built_in">this</span>.storage = [] <span class="comment">//存储数据的数组</span></span><br><span class="line">    <span class="built_in">this</span>.limit = <span class="number">7</span> <span class="comment">//数组长度</span></span><br><span class="line">    <span class="built_in">this</span>.count = <span class="number">0</span> <span class="comment">//记录哈希表已经存放了多少元素，目的 是实现扩容</span></span><br><span class="line">    <span class="comment">//最终哈希表的数格式为[[[k, v], [k, v]], [[k, v]], [[k, v]]]</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//方法</span></span><br><span class="line">    <span class="comment">//1.哈希函数</span></span><br><span class="line">    HashTable.prototype.hashFunc = <span class="function"><span class="keyword">function</span>(<span class="params">str, size</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//1.定义hashCode变量</span></span><br><span class="line">        <span class="keyword">var</span> hashCode = <span class="number">0</span></span><br><span class="line">        <span class="comment">//霍纳算法,来计算hashCode</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">            <span class="comment">//charCodeAt() 方法可返回指定位置的字符的 Unicode 编码。</span></span><br><span class="line">            hashCode = <span class="number">37</span> * hashCode + str.charCodeAt(i)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//取余操作</span></span><br><span class="line">        <span class="keyword">var</span> index = hashCode % size</span><br><span class="line">        <span class="keyword">return</span> index</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//插入&amp;删除操作</span></span><br><span class="line">    HashTable.prototype.put = <span class="function"><span class="keyword">function</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//1.根据key值获取索引值，目的是将数据插入到 相应的位置</span></span><br><span class="line">        <span class="keyword">var</span> index = <span class="built_in">this</span>.hashFunc(key,<span class="built_in">this</span>.limit)</span><br><span class="line">        <span class="comment">//2.根据索引值，取出桶（bucket)也就是对应索引值下的数组 </span></span><br><span class="line">        <span class="keyword">var</span> bucket = <span class="built_in">this</span>.storage[index]</span><br><span class="line">        <span class="comment">//2.1如果桶不存在，创建桶，并且放置在索引位置</span></span><br><span class="line">        <span class="keyword">if</span>(bucket == <span class="literal">null</span>) &#123;</span><br><span class="line">            bucket = []</span><br><span class="line">            <span class="built_in">this</span>.storage[index] = bucket</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//3。判断是新增还是修改原来的值</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; bucket.length; i++) &#123;</span><br><span class="line">            <span class="keyword">var</span> tuple = bucket[i]</span><br><span class="line">            <span class="keyword">if</span>(tuple[<span class="number">0</span>] === key) &#123;</span><br><span class="line">                tuple[<span class="number">1</span>] = value</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//4.进行添加操作</span></span><br><span class="line">        bucket.push([key, value])</span><br><span class="line">        <span class="built_in">this</span>.count += <span class="number">1</span></span><br><span class="line">        <span class="comment">//5.判断是否 需要扩容</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">this</span>.count &gt; <span class="built_in">this</span>.limit * <span class="number">0.75</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> newSize = <span class="built_in">this</span>.limit * <span class="number">2</span></span><br><span class="line">            <span class="keyword">var</span> newPrime = <span class="built_in">this</span>.getPrime(newSize)</span><br><span class="line">            <span class="built_in">this</span>.resize(newPrime)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//获取操作</span></span><br><span class="line">    HashTable.prototype.get =  <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//1.根据key获取index</span></span><br><span class="line">        <span class="keyword">var</span> index = <span class="built_in">this</span>.hashFunc(key, <span class="built_in">this</span>.limit)</span><br><span class="line">        <span class="comment">//2.根据索引值获取bucket</span></span><br><span class="line">        <span class="keyword">var</span> bucket = <span class="built_in">this</span>.storage(index)</span><br><span class="line">        <span class="keyword">if</span>(bucket == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; bucket.length; i++) &#123;</span><br><span class="line">            <span class="keyword">var</span> tuple = bucket[i]</span><br><span class="line">            <span class="keyword">if</span>(tuple[<span class="number">0</span>] == key) &#123;</span><br><span class="line">                <span class="keyword">return</span> tuple[<span class="number">1</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//删除操作</span></span><br><span class="line">    HashTable.prototype.remove = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">         <span class="comment">//1.根据key获取index</span></span><br><span class="line">        <span class="keyword">var</span> index = <span class="built_in">this</span>.hashFunc(key, <span class="built_in">this</span>.limit)</span><br><span class="line">         <span class="comment">//2.根据索引值获取bucket</span></span><br><span class="line">        <span class="keyword">var</span> bucket = <span class="built_in">this</span>.storage(index)</span><br><span class="line">        <span class="keyword">if</span>(bucket == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; bucket.length; i++) &#123;</span><br><span class="line">            <span class="keyword">var</span> tuple = bucket[i]</span><br><span class="line">            <span class="keyword">if</span>(tuple[<span class="number">0</span>] == key) &#123;</span><br><span class="line">                bucket.splice(i, <span class="number">1</span>)</span><br><span class="line">                <span class="built_in">this</span>.count--</span><br><span class="line">                <span class="comment">//缩小容量</span></span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">this</span>.limit &lt; <span class="number">7</span> &amp;&amp; <span class="built_in">this</span>.count &lt; <span class="built_in">this</span>.limit * <span class="number">0.75</span>) &#123;</span><br><span class="line">                    <span class="keyword">var</span> newSize = <span class="built_in">Math</span>.floor(<span class="built_in">this</span>.limit / <span class="number">2</span>)</span><br><span class="line">                    <span class="keyword">var</span> newPrime = <span class="built_in">this</span>.getPrime(newSize)</span><br><span class="line">                    <span class="built_in">this</span>.resize(newPrime)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> tuple[<span class="number">1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//其他方法</span></span><br><span class="line">    <span class="comment">//判断哈希表是否为空</span></span><br><span class="line">    HashTable.prototype.isEmpty = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.count === <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//获取哈希表元素的个数</span></span><br><span class="line">    HashTable.prototype.size = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.count</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="comment">//哈希表扩容</span></span><br><span class="line">    HashTable.prototype.resize =  <span class="function"><span class="keyword">function</span>(<span class="params">newLimit</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//1.保存旧的数组内容</span></span><br><span class="line">        <span class="keyword">var</span> oldStorage = <span class="built_in">this</span>.storage</span><br><span class="line">        <span class="comment">//重新定义属性</span></span><br><span class="line">        <span class="built_in">this</span>.storage = []</span><br><span class="line">        <span class="built_in">this</span>.limit = newLimit</span><br><span class="line">        <span class="built_in">this</span>.count = <span class="number">0</span></span><br><span class="line">        <span class="comment">//3.遍历oldStorage中所有的bucket</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; oldStorage.length; i++) &#123;</span><br><span class="line">            <span class="keyword">var</span> bucket = oldStorage[i]</span><br><span class="line">            <span class="keyword">if</span>(bucket = <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; bucket.length; j++) &#123;</span><br><span class="line">                <span class="keyword">var</span> tuple = bucket[i]</span><br><span class="line">                <span class="built_in">this</span>.put(tuple[<span class="number">0</span>], tuple[<span class="number">1</span>])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//判断某一个数是不是质数</span></span><br><span class="line">    HashTable.prototype.iePrime = <span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> temp = <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.sqrt(num))</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">2</span>; i &lt;= temp; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(num % i === <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//获取质数的方法</span></span><br><span class="line">    HashTable.prototype.getPrime = <span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(!<span class="built_in">this</span>.isPrime(num)) &#123;</span><br><span class="line">            num++</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://ldx-lmd.github.io/021/05/28/%E5%93%88%E5%B8%8C%E8%A1%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2021/05/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E9%9B%86%E5%90%88/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据结构——集合</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">哈希表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86%E5%93%88%E5%B8%8C%E5%8C%96"><span class="toc-number">1.1.</span> <span class="toc-text">认识哈希化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E5%9C%B0%E5%9D%80%E6%B3%95%EF%BC%88%E6%8B%89%E9%93%BE%E6%B3%95%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">链地址法（拉链法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E6%94%BE%E5%9C%B0%E5%9D%80%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">开放地址法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%8D%E5%93%88%E5%B8%8C%E6%B3%95"><span class="toc-number">1.3.1.</span> <span class="toc-text">再哈希法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E7%9A%84%E5%B0%81%E8%A3%85"><span class="toc-number">1.4.</span> <span class="toc-text">哈希表的封装</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
   
 
 
@@ -283,8 +451,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
