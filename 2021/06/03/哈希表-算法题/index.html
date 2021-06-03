@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>LDX110130LMD</title>
+  <title>哈希表--算法题 | LDX110130LMD</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="110love130">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LDX110130LMD">
-<meta property="og:url" content="http://example.com/page/2/index.html">
+  <meta name="description" content="哈希表——算法题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="哈希表--算法题">
+<meta property="og:url" content="http://example.com/2021/06/03/%E5%93%88%E5%B8%8C%E8%A1%A8-%E7%AE%97%E6%B3%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="LDX110130LMD">
-<meta property="og:description" content="110love130">
+<meta property="og:description" content="哈希表——算法题">
 <meta property="og:locale">
+<meta property="article:published_time" content="2021-06-03T02:22:48.000Z">
+<meta property="article:modified_time" content="2021-06-03T02:24:58.516Z">
 <meta property="article:author" content="ldxlmd">
 <meta name="twitter:card" content="summary">
   
@@ -185,42 +187,159 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-    <article id="post-继承" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-哈希表-算法题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/20/%E7%BB%A7%E6%89%BF/">继承</a>
+    <h1 class="article-title" itemprop="name">
+      哈希表--算法题
     </h1>
   
 
         
-        <a href="/2021/04/20/%E7%BB%A7%E6%89%BF/" class="archive-article-date">
-  	<time datetime="2021-04-20T06:18:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-20</time>
+        <a href="/2021/06/03/%E5%93%88%E5%B8%8C%E8%A1%A8-%E7%AE%97%E6%B3%95%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2021-06-03T02:22:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><ol>
-<li>原型链继承</li>
-<li>构造继承</li>
-<li>组合继承</li>
-<li>寄生组合继承</li>
-<li>原型式继承</li>
-<li>寄生继承</li>
-<li>混入式继承</li>
-<li>class中的extends继承</li>
-</ol>
-        
-          <a class="article-more-a" href="/2021/04/20/%E7%BB%A7%E6%89%BF/#more">more >></a>
-        
+        <h1 id="哈希表——算法题"><a href="#哈希表——算法题" class="headerlink" title="哈希表——算法题"></a>哈希表——算法题</h1><span id="more"></span>
+
+<h2 id="242-有效的字母异位词"><a href="#242-有效的字母异位词" class="headerlink" title="242.有效的字母异位词"></a>242.有效的字母异位词</h2><p> 给定两个字符串 <em>s</em> 和 <em>t</em> ，编写一个函数来判断 <em>t</em> 是否是 <em>s</em> 的字母异位词。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: s &#x3D; &quot;anagram&quot;, t &#x3D; &quot;nagaram&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: s &#x3D; &quot;rat&quot;, t &#x3D; &quot;car&quot;</span><br><span class="line">输出: fals</span><br></pre></td></tr></table></figure>
+
+<p>方法1：排序</p>
+<p>t是s 的异位词等价于 「两个字符串排序后相等」  因此我们可以对字符串 <em>s</em> 和 <em>t</em> 分别排序，看排序后的字符串是否相等即可判断。此外，如果 <em>s</em> 和 t* 的长度不同，<em>t</em> 必然不是 <em>s</em> 的异位词。 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isAnagram = <span class="function"><span class="keyword">function</span>(<span class="params">s,t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> s.length === t.length &amp;&amp; [...s].sort().join(<span class="string">&#x27;&#x27;</span>) == [...t].sort().join(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方法2：哈希表</p>
+<p>t是s的异位词等价于 「两个字符串中字符出现的种类和次数均相等」  由于字符串只包含 26 个小写字母，因此我们可以维护一个长度为 26 的频次数组 table,先遍历记录字符串s中字符出现的频数，然后遍历字符串t，减去table中对应的频数，如果table[i] &lt; 0,则说明t包含一个不在s中的额外字符，返回false即可</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isAnagram = <span class="function"><span class="keyword">function</span>(<span class="params">s, t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(s.length === t.length) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> table = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">26</span>).fill(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; s.length; i++) &#123;</span><br><span class="line">        table[s.codePointAt(i) - <span class="string">&#x27;a&#x27;</span>.codePointAt(<span class="number">0</span>)]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; t.length; i++) &#123;</span><br><span class="line">        table[t.codePointAt(i) - <span class="string">&#x27;a&#x27;</span>.codePointAt(<span class="number">0</span>)]--;</span><br><span class="line">        <span class="keyword">if</span>(table[t.codePointAt(i) - <span class="string">&#x27;a&#x27;</span>.codePointAt(<span class="number">0</span>)] &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="49-字母异位词分组"><a href="#49-字母异位词分组" class="headerlink" title="49.字母异位词分组"></a>49.字母异位词分组</h2><p> 给定一个字符串数组，将字母异位词组合在一起。字母异位词指字母相同，但排列不同的字符串。 </p>
+<p>示例：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入: [&quot;eat&quot;, &quot;tea&quot;, &quot;tan&quot;, &quot;ate&quot;, &quot;nat&quot;, &quot;bat&quot;]</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">  [&quot;ate&quot;,&quot;eat&quot;,&quot;tea&quot;],</span><br><span class="line">  [&quot;nat&quot;,&quot;tan&quot;],</span><br><span class="line">  [&quot;bat&quot;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>解题思路：</p>
+<p>由于互为字母 异位词的两个字符串包含的字母相同，  因此两个字符串中的相同字母出现的次数一定是相同的，故可以将每个字母出现的次数使用字符串表示，作为哈希表的键。  由于字符串只包含小写字母，因此对于每个字符串，可以使用长度为 26的数组记录每个字母出现的次数。 第一步循环遍历数组中的所有字符串，然后创建一个26长的数组，然后遍历第一个字符串的字符出现的次数，记录这个数组，然后把这个数组转换成字符串，当作哈希表的键，然后判断哈希表中有没有这个键，如果这个键不存在，之间向哈希表中加入这个键，值就是当前遍历到字符串，然后遍历第二个字符串，在创建26个为0的数组，遍历字符出现的次数，转换成字符串，作为键，如果两个字符串一样，说明当前哈希表中存在这个键，然后获取这个键对应的值，这个值是一个数组类型，让后向这个数组里添加当前遍历的字符串，然后再向哈希表中写入键和插入新数据的值，最后输出哈希表的值就是想要的结果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> groupAnagrams = <span class="function"><span class="keyword">function</span>(<span class="params">strs</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//1.创建一个哈希表</span></span><br><span class="line">    <span class="keyword">let</span> hash = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; strs.length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> str = strs[i]</span><br><span class="line">        <span class="keyword">let</span> array = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">26</span>).fill(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; str.length; j++) &#123;</span><br><span class="line">            arr[str.charCodeAt(j) - <span class="number">97</span>]++</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">let</span> hashKey = arr.join()</span><br><span class="line">        <span class="keyword">if</span>(hash.has(hashKsy)) &#123;</span><br><span class="line">            <span class="keyword">let</span> temp = hash.get(hashKey)</span><br><span class="line">            temp.push(str)</span><br><span class="line">            hash.set(hashKey,temp)</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            hash.set(hashKey,[str])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> [...hash.values()]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="349-两个数组的交集"><a href="#349-两个数组的交集" class="headerlink" title="349.两个数组的交集"></a>349.两个数组的交集</h2><p>给定两个数组，编写一个函数来计算他们的交集</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums1 = [1,2,2,1], nums2 = [2,2]</span><br><span class="line">输出：[2]</span><br><span class="line">输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]</span><br><span class="line">输出：[9,4]</span><br></pre></td></tr></table></figure>
+
+<p>说明</p>
+<ul>
+<li>输出结果中的每个元素一定是唯一的。</li>
+<li>我们可以不考虑输出结果的顺序。</li>
+</ul>
+<p>解题思路；</p>
+<p>由于输出结果中每个元素必须是唯一的，所以我们想到可以用set解决</p>
+<p>创建三个set，分别用来存储第一个数组第二个数组和交集的数组，遍历第一个set里的每一个值，判断是否在第二个set里，如果在，将该元素添加进要输出的set中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> intersection = <span class="function"><span class="keyword">function</span>(<span class="params">nums1, nums2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> nums1Set = <span class="keyword">new</span> <span class="built_in">Set</span>(nums1)</span><br><span class="line">    <span class="keyword">let</span> nums2Set = <span class="keyword">new</span> <span class="built_in">Set</span>(nums2)</span><br><span class="line">    <span class="keyword">let</span> interSectionSet = <span class="keyword">new</span> <span class="built_in">Set</span>()</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> item <span class="keyword">of</span> nums1Set.values()) &#123;</span><br><span class="line">        <span class="keyword">if</span>(nums2Set.has(item)) &#123;</span><br><span class="line">            interSectionSet.add(item)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> [...interSectionSet]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="350-两个数组的交集Ⅱ"><a href="#350-两个数组的交集Ⅱ" class="headerlink" title="350.两个数组的交集Ⅱ"></a>350.两个数组的交集Ⅱ</h2><p>给定两个数组，编写一个函数来计算他们的交集</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">示例1</span><br><span class="line">输入：nums1 = [1,2,2,1], nums2 = [2,2]</span><br><span class="line">输出：[2,2]</span><br><span class="line">示例2</span><br><span class="line">输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]</span><br><span class="line">输出：[4,9]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>输出结果中每个元素出现的次数，应与元素在两个数组中出现次数的最小值一致。</li>
+<li>我们可以不考虑输出结果的顺序。</li>
+</ul>
+<p>双指针法解题思路</p>
+<p>提示说明不要求交集的顺序，所以我们将两个数组排序</p>
+<ul>
+<li>创建一个指针i指向nums1数组的首位，指针j指向nums2数组的首位</li>
+<li>创建一个临时栈，用于存放结果</li>
+<li>开始比较指针i和指针j值的大小，若两个值不相等，则数字小的指针，往后移一位</li>
+<li>若指针i和指针j相等，将交集压入栈</li>
+<li>若nums1或者nums2有一个遍历结束，代表另一方剩余值，都是唯一存在的，且不会产生交集</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> intersect = <span class="function"><span class="keyword">function</span>(<span class="params">nums1, nums2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = []</span><br><span class="line">    <span class="keyword">let</span>  l = <span class="number">0</span>, r = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//对两个数组 进行排序</span></span><br><span class="line">    nums1.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b)</span><br><span class="line">    nums2.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b)</span><br><span class="line">    <span class="keyword">while</span>(l &lt; nums1.length &amp;&amp; r &lt; nums2.length) &#123;</span><br><span class="line">        <span class="keyword">if</span>(nums1[l] == nums2[r]) &#123;</span><br><span class="line">            result.push(nums1[l])</span><br><span class="line">            l++</span><br><span class="line">            r++</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums1[l] &lt; nums2[r]) &#123;</span><br><span class="line">                l++</span><br><span class="line">            &#125;<span class="keyword">else</span>  &#123;</span><br><span class="line">                r++</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>哈希法解题思路：</p>
+<p>创建map数据结构，记录第一个数组中的元素值为键，出现的次数为值</p>
+<p>然后再遍历第二个数组，判断当前遍历的元素是否在哈希表中，如果在，将值压入输出结果的数组中，如果value的值大于1，哈希表中的value值减1，表示已经找到一个相同的了，如果value值等于一，则删除该元素</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> intersect = <span class="function"><span class="keyword">function</span>(<span class="params">nums1, nums2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line">    <span class="keyword">let</span> result = []</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums1.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(map.has(nums1[i])) &#123;</span><br><span class="line">            map.set(nums1[i], map.get(nums1[i]) + <span class="number">1</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            map.set(nums1[i], <span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//遍历第二个数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums2.length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> temp = nums2[i]</span><br><span class="line">        <span class="keyword">let</span> mapkey = map.get(temp)</span><br><span class="line">        <span class="keyword">if</span>(map.has(temp)) &#123;</span><br><span class="line">            result.push(temp)</span><br><span class="line">            <span class="keyword">if</span>(mapkey &gt; <span class="number">1</span>) &#123;</span><br><span class="line">                map.set(temp, mapkey - <span class="number">1</span>)</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">               map.delete(temp)</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="202-快乐数"><a href="#202-快乐数" class="headerlink" title="202.快乐数"></a>202.快乐数</h2><p>编写一个算法来判断一个数n是不是快乐数</p>
+<p> 「快乐数」定义为： </p>
+<ul>
+<li>对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和。</li>
+<li>然后重复这个过程直到这个数变为 1，也可能是 <strong>无限循环</strong> 但始终变不到 1。</li>
+<li>如果 <strong>可以变为</strong> 1，那么这个数就是快乐数。</li>
+</ul>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">示例1</span><br><span class="line">输入：19</span><br><span class="line">输出：true</span><br><span class="line">解释：</span><br><span class="line">12 + 92 = 82</span><br><span class="line">82 + 22 = 68</span><br><span class="line">62 + 82 = 100</span><br><span class="line">12 + 02 + 02 = 1</span><br><span class="line"></span><br><span class="line">示例2</span><br><span class="line">输入：n = 2</span><br><span class="line">输出：false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>解题思路：</p>
+<p>主要是判断每一次数的每一位的平方和有没有一样的，如果有一样的，就会陷入一个死循环中，这样永远不会输出1，所以可以用set来解决，没计算一个和，将和添加到set中，然后进行下一次求和，判断值是否在set中，如果在直接返回false，否则返回true。另外一个重要的点是，如何计算一个数字的每个位的平方，可以把数字变成字符串，然后遍历字符串的每一个字符，进行平方，循环的每一次要更新sum和的值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isHappy = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>)  </span>&#123;</span><br><span class="line">    <span class="comment">//创建set</span></span><br><span class="line">    <span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>()</span><br><span class="line">    <span class="comment">//创建保存每次求和的变量</span></span><br><span class="line">    <span class="keyword">let</span> sum</span><br><span class="line">    <span class="comment">//让数字n转换成字符串</span></span><br><span class="line">    n += <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">while</span>(sum !== <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="comment">//每次循环开始让sum = 0</span></span><br><span class="line">        sum = <span class="number">0</span></span><br><span class="line">        <span class="comment">//循环遍历每个字符串n的位</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n.length; i++) &#123;</span><br><span class="line">        	sum = sum + n[i] * n[i]</span><br><span class="line">       &#125;</span><br><span class="line">        n = sum + <span class="string">&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span>(set.has(sum)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">        set.add(sum)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1.两数之和"></a>1.两数之和</h2><p>给定一个整数数组nums和一个整数目标值target，请在该数组中找出和为目标值target的那两个整数，并返回他们的数组下标</p>
+<p> 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。 </p>
+<p>解题思路</p>
+<p>我们很容易想到用哈希表来解决这个问题，遍历数组中的元素，用目标值前去当前遍历的值，得到的值，如果在哈希表中，就可以直接输出结果了，如果不在，那么我们需要将当前遍历的元素存在哈希表中，好让后续遍历的数使用，哈希表键为数组元素，值为下标值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> twoSum = <span class="function"><span class="title">functionn</span>(<span class="params">nums, target</span>)</span> &#123;</span><br><span class="line">    <span class="comment">//创建哈希表</span></span><br><span class="line">    <span class="keyword">let</span> hashmap = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(hashmap.has(target - nums[i])) &#123;</span><br><span class="line">            <span class="keyword">return</span> [hashmap.get(nums[i]), i]</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            hashmap.set(nums[i], i)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> []</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="454-四数相加Ⅱ"><a href="#454-四数相加Ⅱ" class="headerlink" title="454.四数相加Ⅱ"></a>454.四数相加Ⅱ</h2><p>给定四个包含整数的数组列表A，B，C，D，计算有多少个元组（i，j,k,l)，使得A[i] + B[j] + C[k] + D[l] = 0</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">A = [ 1, 2]</span><br><span class="line">B = [-2,-1]</span><br><span class="line">C = [-1, 2]</span><br><span class="line">D = [ 0, 2]</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line">2</span><br><span class="line"></span><br><span class="line">解释:</span><br><span class="line">两个元组如下:</span><br><span class="line">1. (0, 0, 0, 1) -&gt; A[0] + B[0] + C[0] + D[1] = 1 + (-2) + (-1) + 2 = 0</span><br><span class="line">2. (1, 1, 0, 0) -&gt; A[1] + B[1] + C[0] + D[0] = 2 + (-1) + (-1) + 0 = 0</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>解题思路</p>
+<p>我们可以将四个数组分成两部分，A和B一组，C和D一组，对于A和B，我们使用两层循环对他们进行遍历，得到所有A[i] + B[j]的值并存入哈希表中，和的值表示哈希表的键，和出现的次数表示哈希表的值</p>
+<p>对于C和D，同样用两层循环进行遍历，当遍历C[k] + D[l]时，如果0-(C[k] + D[l]),出现在哈希映射中，那么将0-(C[k] + D[l])的值累加进要输出的答案中。最终即可获得四元组数目</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fourSumCount = <span class="function"><span class="keyword">function</span>(<span class="params">nums1, nums2, nums3, nums4</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> hashmap = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line">    <span class="keyword">for</span>(a <span class="keyword">of</span> nums1) &#123;</span><br><span class="line">        <span class="keyword">for</span>(b <span class="keyword">of</span> nums2) &#123;</span><br><span class="line">            <span class="keyword">let</span> sum = a + b</span><br><span class="line">            <span class="keyword">if</span>(hashmap.has(sum)) &#123;</span><br><span class="line">                hashmap.set(sum, hashmap.get(sum) + <span class="number">1</span>)</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                hashmap.set(sum, <span class="number">1</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(c <span class="keyword">of</span> nums3) &#123;</span><br><span class="line">        <span class="keyword">for</span>(d <span class="keyword">of</span> nums4) &#123;</span><br><span class="line">            sum = c + d</span><br><span class="line">            <span class="keyword">if</span>(hashmap.has(-sum)) &#123;</span><br><span class="line">                count += hashmap.get(-sum)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="15-三数之和"><a href="#15-三数之和" class="headerlink" title="15.三数之和"></a>15.三数之和</h2><p>给你一个包含n个整数的数组nums，判断nums中是否存在三个元素啊a, b,  c，使得a+b+c = 0。请找出所有和为0且不重复的三元组。注意：答案中不可以包含重复的三元组</p>
+<p><strong>解题思路</strong></p>
+<ul>
+<li>边界条件：对于数组的长度为n，如果数组为null，或者数组的长度小于3，返回[]</li>
+<li>对数组进行排序</li>
+<li>遍历数组</li>
+<li>如果nums[i] &gt; 0 因为数组已经从小到大排序了，所以后面不可能出现三个数相加等于0的情况，直接返回结果</li>
+<li>对于重复的元素：直接跳过，避免出现重复的结果 ，这里重复的解可以细分为两种。</li>
+<li>第一种：遍历到的元素nums[i]重复，这个时候判断nums[i]和nums[i - 1] 是否相等</li>
+<li>第二种 左指针L或者由指针R重复，此时需要不断的移动左指针和右指针直到找到不重复的元素</li>
+<li>若和大于0，说明nums[R]太大，R向左移动</li>
+<li>若和小于0，说明nums[L]太小，L向右移动</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> threeSum = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ans = []</span><br><span class="line">    <span class="keyword">if</span>(nums == <span class="literal">null</span> || nums.length &lt; <span class="number">3</span>) <span class="keyword">return</span> ans</span><br><span class="line">    <span class="comment">//对数组排序</span></span><br><span class="line">    nums.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="comment">//如果遍历的当前元素大于0，再相加都会大于 0，直接返回结果</span></span><br><span class="line">        <span class="keyword">if</span>(num[i] &gt; <span class="number">0</span>) <span class="keyword">break</span></span><br><span class="line">        <span class="comment">//去重，如果遍历的元素和上一个元素相等，跳过该元素</span></span><br><span class="line">        <span class="keyword">if</span>(num[i] == nums[i -<span class="number">1</span>]) <span class="keyword">continue</span></span><br><span class="line">        <span class="comment">//定义左指针</span></span><br><span class="line">        <span class="keyword">let</span> L = i + <span class="number">1</span></span><br><span class="line">        <span class="comment">//定义右指针</span></span><br><span class="line">        <span class="keyword">let</span> R = nums.length - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span>(L &lt; R) &#123;</span><br><span class="line">            <span class="keyword">const</span> sum = nums[i] + nums[L] + nums[R]</span><br><span class="line">            <span class="keyword">if</span>(sum === <span class="number">0</span>) &#123;</span><br><span class="line">                ans.push([nums[i], nums[L], num[R]])</span><br><span class="line">                <span class="comment">//左指针去重</span></span><br><span class="line">                <span class="keyword">while</span>(L &lt; R &amp;&amp; nums[L] == nums[L + <span class="number">1</span>]) L++</span><br><span class="line">                <span class="comment">//右指针去重</span></span><br><span class="line">                <span class="keyword">while</span>(L &lt; R &amp;&amp; nums[R] == nums[R - <span class="number">1</span>]) R--</span><br><span class="line">                L++</span><br><span class="line">                R--</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(sum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">//相加的和大于0，说明右侧值过大，右指针向左移动</span></span><br><span class="line">                R--</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(sum &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                 <span class="comment">//相加的和小于0，说明左侧值过小，左指针向右移动</span></span><br><span class="line">                L++</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -229,16 +348,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/20/%E7%BB%A7%E6%89%BF/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://ldx-lmd.github.io/021/06/03/%E5%93%88%E5%B8%8C%E8%A1%A8-%E7%AE%97%E6%B3%95%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2021/05/28/%E5%93%88%E5%B8%8C%E8%A1%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">哈希表</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -253,147 +431,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-深拷贝浅拷贝" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/19/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D/">深拷贝浅拷贝</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/19/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="archive-article-date">
-  	<time datetime="2021-04-19T00:33:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="了解堆和栈的概念"><a href="#了解堆和栈的概念" class="headerlink" title="了解堆和栈的概念"></a>了解堆和栈的概念</h1>
-        
-          <a class="article-more-a" href="/2021/04/19/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/19/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E7%AE%97%E6%B3%95%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">哈希表——算法题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#242-%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D"><span class="toc-number">1.1.</span> <span class="toc-text">242.有效的字母异位词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#49-%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84"><span class="toc-number">1.2.</span> <span class="toc-text">49.字母异位词分组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#349-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86"><span class="toc-number">1.3.</span> <span class="toc-text">349.两个数组的交集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#350-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86%E2%85%A1"><span class="toc-number">1.4.</span> <span class="toc-text">350.两个数组的交集Ⅱ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#202-%E5%BF%AB%E4%B9%90%E6%95%B0"><span class="toc-number">1.5.</span> <span class="toc-text">202.快乐数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="toc-number">1.6.</span> <span class="toc-text">1.两数之和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#454-%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0%E2%85%A1"><span class="toc-number">1.7.</span> <span class="toc-text">454.四数相加Ⅱ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="toc-number">1.8.</span> <span class="toc-text">15.三数之和</span></a></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/15/%E6%95%B0%E7%BB%84/">数组</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/15/%E6%95%B0%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2021-04-15T07:46:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="创建和初始化数组"><a href="#创建和初始化数组" class="headerlink" title="创建和初始化数组"></a>创建和初始化数组</h2><p>用JavaScript声明、创建和初始化数组很简单</p>
-        
-          <a class="article-more-a" href="/2021/04/15/%E6%95%B0%E7%BB%84/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/15/%E6%95%B0%E7%BB%84/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -419,8 +482,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
